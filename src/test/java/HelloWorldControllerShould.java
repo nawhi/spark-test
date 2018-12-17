@@ -10,6 +10,7 @@ public class HelloWorldControllerShould {
     private Response res;
     private Request req;
     private HelloWorldController controller;
+    private ApplicationService appService;
 
     /*
     2. content type application/json
@@ -20,7 +21,8 @@ public class HelloWorldControllerShould {
     void setUp() {
         res = mock(Response.class);
         req = mock(Request.class);
-        controller = new HelloWorldController();
+        appService = mock(ApplicationService.class);
+        controller = new HelloWorldController(appService);
     }
 
     @Test
@@ -33,5 +35,11 @@ public class HelloWorldControllerShould {
     public void set_json_content_for_hello_world_request() {
         controller.helloWorld(req, res);
         verify(res).type("application/json");
+    }
+
+    @Test
+    public void ask_service_for_hello_world_response() {
+        controller.helloWorld(req, res);
+        verify(appService).getHelloWorldResponse();
     }
 }
