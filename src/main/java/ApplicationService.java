@@ -1,6 +1,5 @@
 public class ApplicationService {
     public String getHelloWorldResponse() {
-        return null;
-
+        return "Hello World";
     }
 }
