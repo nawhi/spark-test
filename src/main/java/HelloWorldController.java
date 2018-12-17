@@ -8,9 +8,9 @@ public class HelloWorldController {
         this.appService = appService;
     }
 
-    public String helloWorld(Request req, Response res) {
+    public HelloWorldResponseResource helloWorld(Request req, Response res) {
         res.status(200);
         res.type("application/json");
-        return appService.getHelloWorldResponse();
+        return new HelloWorldResponseResource(appService.getHelloWorldResponse());
     }
 }
